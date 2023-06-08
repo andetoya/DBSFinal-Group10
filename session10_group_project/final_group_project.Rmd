@@ -645,6 +645,7 @@ cost_summary <- cost %>%
 
 cost_summary
 
+#With this results, the model will reduce the cost from 2M (false_naive) to 500k (false_negative)
 ```
 
 -   If we use a naive classifier thinking that all transactions are legitimate and not fraudulent, the cost to the company is `r scales::dollar(cost_summary$false_naives)`.
@@ -654,3 +655,5 @@ cost_summary
 -   Our classifier also has some false positives, `r scales::dollar(cost_summary$false_positives)`, namely flagging transactions as fraudulent, but which were legitimate. Assuming the card company makes around 2% for each transaction (source: <https://startups.co.uk/payment-processing/credit-card-processing-fees/>), the amount of money lost due to these false positives is `r scales::dollar(cost_summary$false_positives * 0.02)`
 
 -   The \$ improvement over the naive policy is `r scales::dollar(cost_summary$false_naives - cost_summary$false_negatives - cost_summary$false_positives * 0.02)`.
+
+-   
